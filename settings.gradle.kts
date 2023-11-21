@@ -16,3 +16,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Watch Next"
 include(":app")
+include(":core:common")
+include(":core:design-system")
