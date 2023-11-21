@@ -18,3 +18,5 @@ rootProject.name = "Watch Next"
 include(":app")
 include(":core:common")
 include(":core:design-system")
+include(":core:model")
+include(":core:ui")
