@@ -1,16 +1,18 @@
 package com.heka.search
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -35,6 +37,7 @@ import com.arch.ui.component.PosterCarousel
 import com.arch.ui.component.PosterCarouselLoading
 import com.arch.ui.component.SearchToolbar
 import com.arch.ui.mainSection
+import java.util.Locale
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
@@ -76,24 +79,13 @@ fun SearchScreen(
             Spacer(modifier = Modifier.height(100.dp))
             when(uiState) {
                 SearchUiState.Loading -> {
-                    List(3) {
+                    List(2) {
                         MediaSectionLoading(modifier = Modifier.fillMaxWidth()) {
                             PosterCarouselLoading()
                         }
                     }
                 }
                 is SearchUiState.Success -> {
-                    if (uiState.resultSections.isEmpty()) {
-                        Image(
-                            imageVector = ImageVector.vectorResource(id = R.drawable.ic_watch_next_icon),
-                            alpha = 0.6f,
-                            contentDescription = "WatchNextIcon",
-                            modifier = Modifier
-                                .padding(top = 200.dp)
-                                .size(100.dp)
-                                .align(Alignment.CenterHorizontally)
-                        )
-                    }
                     uiState.resultSections.forEach { section ->
                         MediaSection(
                             title = stringResource(id = section.titleId),
@@ -106,6 +98,28 @@ fun SearchScreen(
                         }
                     }
                     Spacer(modifier = Modifier.height(basePadding))
+                }
+            }
+        }
+        (uiState as? SearchUiState.Success)?.let {
+            if (uiState.resultSections.isEmpty()) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(basePadding),
+                    modifier = Modifier.align(Alignment.Center)
+                ) {
+                    Image(
+                        imageVector = ImageVector.vectorResource(id = R.drawable.ic_watch_next_icon),
+                        contentDescription = "WatchNextIcon",
+                        modifier = Modifier.size(100.dp)
+                    )
+                    if (searchQuery.isNotBlank()) {
+                        Text(
+                            text = stringResource(id = R.string.notify_search_empty)
+                                .uppercase(Locale.getDefault()),
+                            style = MaterialTheme.typography.titleLarge
+                        )
+                    }
                 }
             }
         }

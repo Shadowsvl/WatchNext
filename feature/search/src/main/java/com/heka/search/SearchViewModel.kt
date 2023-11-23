@@ -55,9 +55,9 @@ class SearchViewModel @Inject constructor(
             return@launch
         }
 
-        delay(300)
-
         _uiState.update { SearchUiState.Loading }
+
+        delay(450)
 
         val requests = listOf(
             async { moviesRepository.searchMovies(query).toResultSection(R.string.section_search_result_movies) },
