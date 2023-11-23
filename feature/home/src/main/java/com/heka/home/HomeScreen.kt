@@ -31,6 +31,7 @@ import com.arch.ui.MediaContentTopSpace
 import com.arch.ui.R
 import com.arch.ui.component.ApiKeyError
 import com.arch.ui.component.BannerCarousel
+import com.arch.ui.component.BannerCarouselLoading
 import com.arch.ui.component.HomeTopBar
 import com.arch.ui.component.MediaSection
 import com.arch.ui.component.MediaSectionLoading
@@ -138,7 +139,13 @@ private fun MainSections(
 ) {
     when(uiState) {
         HomeUiState.Loading -> {
-            List(4) {
+            MediaSectionLoading(modifier = Modifier.fillMaxWidth()) {
+                PosterCarouselLoading()
+            }
+            MediaSectionLoading(modifier = Modifier.fillMaxWidth()) {
+                BannerCarouselLoading()
+            }
+            List(2) {
                 MediaSectionLoading(modifier = Modifier.fillMaxWidth()) {
                     PosterCarouselLoading()
                 }

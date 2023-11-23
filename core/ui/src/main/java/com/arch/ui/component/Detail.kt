@@ -39,6 +39,7 @@ import com.arch.design_system.component.AppAsyncImage
 import com.arch.design_system.icon.AppIcons
 import com.arch.design_system.theme.AppTheme
 import com.arch.design_system.theme.basePadding
+import com.arch.design_system.theme.extraLargePadding
 import com.arch.design_system.theme.smallPadding
 import com.arch.model.data.MediaType
 import com.arch.model.data.WatchMedia
@@ -126,6 +127,7 @@ fun MediaDetail(
                         }
                     )
                 }
+                Spacer(modifier = Modifier.height(60.dp))
             }
             ScoreIndicator(
                 watchMedia = watchMedia,

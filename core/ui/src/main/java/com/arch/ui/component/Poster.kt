@@ -92,13 +92,13 @@ fun PosterCarousel(
 fun PosterCarouselLoading(
     modifier: Modifier = Modifier
 ) {
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(smallPadding),
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(basePadding),
         modifier = Modifier
             .padding(start = basePadding)
             .then(modifier)
     ) {
-        List(4) {
+        items(4) {
             Box(
                 modifier = Modifier
                     .size(PosterWidth, PosterHeight)
@@ -149,8 +149,8 @@ fun PosterGridLoading(
     LazyVerticalGrid(
         columns = GridCells.Adaptive(PosterWidth),
         contentPadding = paddingValues,
-        horizontalArrangement = Arrangement.spacedBy(smallPadding),
-        verticalArrangement = Arrangement.spacedBy(smallPadding),
+        horizontalArrangement = Arrangement.spacedBy(basePadding),
+        verticalArrangement = Arrangement.spacedBy(basePadding),
         modifier = modifier
     ) {
         items(6) {

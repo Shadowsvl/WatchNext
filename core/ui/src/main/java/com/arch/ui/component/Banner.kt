@@ -4,9 +4,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
@@ -35,6 +37,7 @@ import com.arch.model.data.WatchMedia
 import com.arch.ui.BannerHeight
 import com.arch.ui.BannerWidth
 import com.arch.ui.R
+import com.arch.ui.loadingEffect
 import com.arch.ui.movieB
 
 @Composable
@@ -99,6 +102,27 @@ fun BannerCarousel(
             items = items,
             onBannerClick = onBannerClick
         )
+    }
+}
+
+@Composable
+fun BannerCarouselLoading(
+    modifier: Modifier = Modifier
+) {
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(basePadding),
+        modifier = Modifier
+            .padding(start = basePadding)
+            .then(modifier)
+    ) {
+        items(count = 2) {
+            Box(
+                modifier = Modifier
+                    .size(BannerWidth, BannerHeight)
+                    .clip(MaterialTheme.shapes.medium)
+                    .loadingEffect()
+            )
+        }
     }
 }
 
