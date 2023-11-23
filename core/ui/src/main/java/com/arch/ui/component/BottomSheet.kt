@@ -12,8 +12,6 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -91,20 +89,11 @@ fun DetailSheet(
                     watchMedia = watchMedia,
                     modifier = Modifier.align(Alignment.BottomStart)
                 )
-                IconToggleButton(
-                    checked = isSaved,
+                MediaToggleButton(
+                    isSaved = isSaved,
                     onCheckedChange = { onActionClick(watchMedia) },
-                    colors = IconButtonDefaults.iconToggleButtonColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceVariant
-                    ),
                     modifier = Modifier.align(Alignment.BottomEnd)
-                ) {
-                    if (isSaved) {
-                        Icon(imageVector = AppIcons.Check, contentDescription = "Check")
-                    } else {
-                        Icon(imageVector = AppIcons.Add, contentDescription = "Add")
-                    }
-                }
+                )
             }
         }
         Text(

@@ -16,9 +16,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButtonDefaults
-import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -36,10 +33,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.arch.design_system.annotations.ThemePreviews
 import com.arch.design_system.component.AppAsyncImage
-import com.arch.design_system.icon.AppIcons
 import com.arch.design_system.theme.AppTheme
 import com.arch.design_system.theme.basePadding
-import com.arch.design_system.theme.extraLargePadding
 import com.arch.design_system.theme.smallPadding
 import com.arch.model.data.MediaType
 import com.arch.model.data.WatchMedia
@@ -133,22 +128,11 @@ fun MediaDetail(
                 watchMedia = watchMedia,
                 modifier = Modifier.align(Alignment.BottomStart)
             )
-            IconToggleButton(
-                checked = isSaved,
+            MediaToggleButton(
+                isSaved = isSaved,
                 onCheckedChange = { onActionClick(watchMedia) },
-                colors = IconButtonDefaults.iconToggleButtonColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceVariant
-                ),
-                modifier = Modifier
-                    .size(55.dp)
-                    .align(Alignment.BottomEnd)
-            ) {
-                if (isSaved) {
-                    Icon(imageVector = AppIcons.Check, contentDescription = "Check")
-                } else {
-                    Icon(imageVector = AppIcons.Add, contentDescription = "Add")
-                }
-            }
+                modifier = Modifier.align(Alignment.BottomEnd)
+            )
         }
     }
 }
