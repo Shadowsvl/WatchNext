@@ -74,18 +74,14 @@ fun DetailSheet(
                         overflow = TextOverflow.Ellipsis
                     )
                     Row(
-                        horizontalArrangement = Arrangement.spacedBy(basePadding)
+                        horizontalArrangement = Arrangement.spacedBy(smallPadding)
                     ) {
-                        Text(
-                            text = watchMedia.releaseDate,
-                            style = MaterialTheme.typography.labelMedium
-                        )
-                        Text(
-                            text = when(watchMedia.mediaType) {
+                        InfoChip(label = watchMedia.releaseDate)
+                        InfoChip(
+                            label = when(watchMedia.mediaType) {
                                 MediaType.Movie -> stringResource(id = R.string.media_type_movie)
                                 MediaType.Tv -> stringResource(id = R.string.media_type_tv)
-                            },
-                            style = MaterialTheme.typography.labelMedium
+                            }
                         )
                     }
                     ScoreIndicator(
@@ -127,7 +123,7 @@ fun DetailSheet(
         ) {
             Text(
                 text = stringResource(id = R.string.watch_media_sheet_info),
-                style = MaterialTheme.typography.labelMedium
+                style = MaterialTheme.typography.labelLarge
             )
             Icon(imageVector = AppIcons.ArrowForward, contentDescription = "Arrow")
         }

@@ -48,7 +48,7 @@ fun Poster(
 ) {
     AppAsyncImage(
         imageUrl = imageUrl,
-        contentScale = ContentScale.Crop,
+        contentScale = ContentScale.FillBounds,
         placeholder = painterResource(R.drawable.ic_poster_placeholder),
         error = painterResource(R.drawable.ic_poster_placeholder),
         contentDescription = "Poster",
@@ -78,7 +78,7 @@ fun PosterCarousel(
     LazyRow(
         state = listState,
         contentPadding = PaddingValues(horizontal = basePadding),
-        horizontalArrangement = Arrangement.spacedBy(smallPadding),
+        horizontalArrangement = Arrangement.spacedBy(basePadding),
         modifier = modifier
     ) {
         posters(
@@ -129,8 +129,8 @@ fun PosterGrid(
     LazyVerticalGrid(
         columns = GridCells.Adaptive(PosterWidth),
         contentPadding = paddingValues,
-        horizontalArrangement = Arrangement.spacedBy(smallPadding),
-        verticalArrangement = Arrangement.spacedBy(smallPadding),
+        horizontalArrangement = Arrangement.spacedBy(basePadding),
+        verticalArrangement = Arrangement.spacedBy(basePadding),
         state = gridState,
         modifier = modifier
     ) {

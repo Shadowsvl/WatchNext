@@ -5,6 +5,9 @@ import androidx.compose.ui.unit.dp
 val PosterWidth = 112.dp
 val PosterHeight = 168.dp
 
+val BannerWidth = 286.dp
+val BannerHeight = 160.dp
+
 val MiniPosterWidth = 80.dp
 val MiniPosterHeight = 120.dp
 

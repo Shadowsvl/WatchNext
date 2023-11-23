@@ -5,6 +5,7 @@ import com.arch.common.result.Result
 import com.arch.data.repository.MoviesRepository
 import com.arch.data.repository.SeriesRepository
 import com.arch.model.data.MainSection
+import com.arch.model.data.SectionType
 import com.arch.model.data.WatchMedia
 import com.arch.model.exceptions.ApiKeyException
 import com.arch.ui.R
@@ -21,10 +22,10 @@ class GetMainSectionsUseCase @Inject constructor(
     suspend operator fun invoke(): Result<List<MainSection>> = coroutineScope {
         val requests = listOf(
             async { moviesRepository.getCinemaMovies().toMainSection(R.string.section_cinema_movies) },
-            async { moviesRepository.getLatestMovies().toMainSection(R.string.section_latest_movies) },
+            async { moviesRepository.getLatestMovies().toMainSection(R.string.section_latest_movies, SectionType.Banner) },
             async { moviesRepository.getTrendingMovies().toMainSection(R.string.section_trending_movies) },
             async { seriesRepository.getOnAirSeries().toMainSection(R.string.section_on_air_series) },
-            async { seriesRepository.getLatestSeries().toMainSection(R.string.section_latest_series) },
+            async { seriesRepository.getLatestSeries().toMainSection(R.string.section_latest_series, SectionType.Banner) },
             async { seriesRepository.getTrendingSeries().toMainSection(R.string.section_trending_series) }
         )
         try {
@@ -36,7 +37,8 @@ class GetMainSectionsUseCase @Inject constructor(
     }
 
     private fun Result<List<WatchMedia>>.toMainSection(
-        @StringRes titleId: Int
+        @StringRes titleId: Int,
+        sectionType: SectionType = SectionType.Poster
     ): MainSection {
         return when(this) {
             is Result.Error -> {
@@ -46,7 +48,7 @@ class GetMainSectionsUseCase @Inject constructor(
                     MainSection(titleId, emptyList())
                 }
             }
-            is Result.Success -> MainSection(titleId, data)
+            is Result.Success -> MainSection(titleId, data, sectionType)
         }
     }
 }

@@ -115,26 +115,22 @@ fun MediaDetail(
                     )
                 }
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(basePadding),
+                    horizontalArrangement = Arrangement.spacedBy(smallPadding),
                     modifier = Modifier.padding(top = smallPadding)
                 ) {
-                    Text(
-                        text = watchMedia.releaseDate,
-                        style = MaterialTheme.typography.labelMedium
-                    )
-                    Text(
-                        text = when(watchMedia.mediaType) {
+                    InfoChip(label = watchMedia.releaseDate)
+                    InfoChip(
+                        label = when(watchMedia.mediaType) {
                             MediaType.Movie -> stringResource(id = R.string.media_type_movie)
                             MediaType.Tv -> stringResource(id = R.string.media_type_tv)
-                        },
-                        style = MaterialTheme.typography.labelMedium
+                        }
                     )
                 }
-                ScoreIndicator(
-                    watchMedia = watchMedia,
-                    modifier = Modifier.padding(top = smallPadding)
-                )
             }
+            ScoreIndicator(
+                watchMedia = watchMedia,
+                modifier = Modifier.align(Alignment.BottomStart)
+            )
             IconToggleButton(
                 checked = isSaved,
                 onCheckedChange = { onActionClick(watchMedia) },

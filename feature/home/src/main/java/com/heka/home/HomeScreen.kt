@@ -25,13 +25,12 @@ import com.arch.design_system.annotations.ThemePreviews
 import com.arch.design_system.component.AppGradientBackground
 import com.arch.design_system.theme.AppTheme
 import com.arch.design_system.theme.basePadding
+import com.arch.model.data.SectionType
 import com.arch.model.data.WatchMedia
-import com.google.accompanist.swiperefresh.SwipeRefresh
-import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
-import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.arch.ui.MediaContentTopSpace
 import com.arch.ui.R
 import com.arch.ui.component.ApiKeyError
+import com.arch.ui.component.BannerCarousel
 import com.arch.ui.component.HomeTopBar
 import com.arch.ui.component.MediaSection
 import com.arch.ui.component.MediaSectionLoading
@@ -39,6 +38,9 @@ import com.arch.ui.component.PosterCarousel
 import com.arch.ui.component.PosterCarouselLoading
 import com.arch.ui.mainSection
 import com.arch.ui.watchMediaList
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 
 @Composable
 internal fun HomeRoute(
@@ -158,10 +160,22 @@ private fun MainSections(
                     title = stringResource(id = section.titleId),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    PosterCarousel(
-                        items = section.watchMediaList,
-                        onPosterClick = onPosterClick
-                    )
+                    when(section.sectionType) {
+                        SectionType.Poster -> {
+                            PosterCarousel(
+                                items = section.watchMediaList,
+                                onPosterClick = onPosterClick,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
+                        SectionType.Banner -> {
+                            BannerCarousel(
+                                items = section.watchMediaList,
+                                onBannerClick = onPosterClick,
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
+                    }
                 }
             }
         }

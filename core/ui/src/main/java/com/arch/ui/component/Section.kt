@@ -31,7 +31,7 @@ fun MediaSection(
     Column(modifier = modifier) {
         Text(
             text = title,
-            style = MaterialTheme.typography.titleLarge,
+            style = MaterialTheme.typography.titleMedium,
             modifier = Modifier
                 .paddingFromBaseline(top = topBaselinePadding, bottom = basePadding)
                 .padding(horizontal = basePadding)
