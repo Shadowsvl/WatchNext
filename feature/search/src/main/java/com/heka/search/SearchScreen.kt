@@ -29,8 +29,10 @@ import com.arch.design_system.annotations.ThemePreviews
 import com.arch.design_system.component.AppGradientBackground
 import com.arch.design_system.theme.AppTheme
 import com.arch.design_system.theme.basePadding
+import com.arch.model.data.SectionType
 import com.arch.model.data.WatchMedia
 import com.arch.ui.R
+import com.arch.ui.component.BannerCarousel
 import com.arch.ui.component.MediaSection
 import com.arch.ui.component.MediaSectionLoading
 import com.arch.ui.component.PosterCarousel
@@ -91,10 +93,22 @@ fun SearchScreen(
                             title = stringResource(id = section.titleId),
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            PosterCarousel(
-                                items = section.watchMediaList,
-                                onPosterClick = onPosterClick
-                            )
+                            when(section.sectionType) {
+                                SectionType.Poster -> {
+                                    PosterCarousel(
+                                        items = section.watchMediaList,
+                                        onPosterClick = onPosterClick,
+                                        modifier = Modifier.fillMaxWidth()
+                                    )
+                                }
+                                SectionType.Banner -> {
+                                    BannerCarousel(
+                                        items = section.watchMediaList,
+                                        onBannerClick = onPosterClick,
+                                        modifier = Modifier.fillMaxWidth()
+                                    )
+                                }
+                            }
                         }
                     }
                     Spacer(modifier = Modifier.height(basePadding))

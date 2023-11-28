@@ -8,7 +8,7 @@
     <string name="section_on_air_series">Estrenos en series</string>
     <string name="section_latest_series">Series recientes</string>
     <string name="section_trending_series">Series en tendencia</string>
-    <string name="section_similar_content">Contenido similar</string>
+    <string name="section_similar_content">Más contenido</string>
     <string name="section_search_result_my_list">En mi lista</string>
     <string name="section_search_result_movies">Resultados en películas</string>
     <string name="section_search_result_series">Resultados en series</string>
@@ -24,7 +24,7 @@
     <string name="media_type_tv">Serie</string>
 
     <!-- Watch Media Sheet -->
-    <string name="watch_media_sheet_info">Ver info y similares</string>
+    <string name="watch_media_sheet_info">Ver info y más contenido</string>
 
     <!-- Notify Errors -->
     <string name="notify_invalid_api_key">La llave de API usada no es válida</string>

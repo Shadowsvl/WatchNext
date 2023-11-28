@@ -8,7 +8,7 @@
     <string name="section_on_air_series">Series premieres</string>
     <string name="section_latest_series">Latest series</string>
     <string name="section_trending_series">Trending series</string>
-    <string name="section_similar_content">Similar content</string>
+    <string name="section_similar_content">More content</string>
     <string name="section_search_result_my_list">In my list</string>
     <string name="section_search_result_movies">Results in movies</string>
     <string name="section_search_result_series">Results in series</string>
@@ -24,7 +24,7 @@
     <string name="media_type_tv">Series</string>
 
     <!-- Watch Media Sheet -->
-    <string name="watch_media_sheet_info">See info and similar content</string>
+    <string name="watch_media_sheet_info">See info and more content</string>
 
     <!-- Notify Errors -->
     <string name="notify_invalid_api_key">The API key used is not valid</string>

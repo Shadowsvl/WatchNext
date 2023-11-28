@@ -108,10 +108,10 @@ internal fun HomeScreen(
                     title = stringResource(id = R.string.section_my_list_latest),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    PosterCarousel(
+                    BannerCarousel(
                         items = myListLatest,
                         listState = listState,
-                        onPosterClick = onPosterClick
+                        onBannerClick = onPosterClick
                     )
                 }
             }

@@ -50,7 +50,7 @@ class WatchMediaNetwork @Inject constructor(
 
     override suspend fun getLatestMovies(page: Int): Result<List<WatchMedia>> {
         return api.getLatestMovies(page = page).toResult {
-            it.results?.map(MovieDto::asWatchMedia).orEmpty()
+            it.results?.shuffled()?.map(MovieDto::asWatchMedia).orEmpty()
         }
     }
 
@@ -68,7 +68,7 @@ class WatchMediaNetwork @Inject constructor(
 
     override suspend fun getLatestSeries(page: Int): Result<List<WatchMedia>> {
         return api.getLatestSeries(page = page).toResult {
-            it.results?.map(TvDto::asWatchMedia).orEmpty()
+            it.results?.shuffled()?.map(TvDto::asWatchMedia).orEmpty()
         }
     }
 

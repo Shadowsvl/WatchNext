@@ -8,6 +8,7 @@ import com.arch.data.repository.MediaRepository
 import com.arch.data.repository.MoviesRepository
 import com.arch.data.repository.SeriesRepository
 import com.arch.model.data.MainSection
+import com.arch.model.data.SectionType
 import com.arch.model.data.WatchMedia
 import com.arch.ui.R
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -62,7 +63,7 @@ class SearchViewModel @Inject constructor(
         val requests = listOf(
             async { moviesRepository.searchMovies(query).toResultSection(R.string.section_search_result_movies) },
             async { seriesRepository.searchSeries(query).toResultSection(R.string.section_search_result_series) },
-            async { mediaRepository.searchMyList(query).toResultSection(R.string.section_search_result_my_list) }
+            async { mediaRepository.searchMyList(query).toResultSection(R.string.section_search_result_my_list, sectionType = SectionType.Banner) }
         )
 
         val resultSections = requests.awaitAll().filter { it.watchMediaList.isNotEmpty() }
@@ -71,12 +72,14 @@ class SearchViewModel @Inject constructor(
     }
 
     private fun Result<List<WatchMedia>>.toResultSection(
-        @StringRes titleId: Int
+        @StringRes titleId: Int,
+        sectionType: SectionType = SectionType.Poster
     ) = MainSection(
         titleId = titleId,
         watchMediaList = when(this) {
             is Result.Error -> emptyList()
             is Result.Success -> data
-        }
+        },
+        sectionType = sectionType
     )
 }
