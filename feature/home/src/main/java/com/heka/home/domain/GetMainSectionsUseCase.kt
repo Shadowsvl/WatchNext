@@ -21,34 +21,39 @@ class GetMainSectionsUseCase @Inject constructor(
 
     suspend operator fun invoke(): Result<List<MainSection>> = coroutineScope {
         val requests = listOf(
-            async { moviesRepository.getCinemaMovies().toMainSection(R.string.section_cinema_movies) },
-            async { moviesRepository.getLatestMovies().toMainSection(R.string.section_latest_movies, SectionType.Banner) },
-            async { moviesRepository.getTrendingMovies().toMainSection(R.string.section_trending_movies) },
-            async { seriesRepository.getOnAirSeries().toMainSection(R.string.section_on_air_series) },
-            async { seriesRepository.getLatestSeries().toMainSection(R.string.section_latest_series, SectionType.Banner) },
-            async { seriesRepository.getTrendingSeries().toMainSection(R.string.section_trending_series) }
+            async { moviesRepository.getCinemaMovies().toMainSectionResult(R.string.section_cinema_movies) },
+            async { moviesRepository.getLatestMovies().toMainSectionResult(R.string.section_latest_movies, SectionType.Banner) },
+            async { moviesRepository.getTrendingMovies().toMainSectionResult(R.string.section_trending_movies) },
+            async { seriesRepository.getOnAirSeries().toMainSectionResult(R.string.section_on_air_series) },
+            async { seriesRepository.getLatestSeries().toMainSectionResult(R.string.section_latest_series, SectionType.Banner) },
+            async { seriesRepository.getTrendingSeries().toMainSectionResult(R.string.section_trending_series) }
         )
-        try {
-            val mainSections = requests.awaitAll().filter { it.watchMediaList.isNotEmpty() }
-            Result.Success(mainSections)
-        } catch (e: Exception) {
-            Result.Error(e)
+
+        val mainSections = mutableListOf<MainSection>()
+
+        requests.awaitAll().forEach {
+            when(it) {
+                is Result.Error -> return@coroutineScope Result.Error(it.exception)
+                is Result.Success -> mainSections.add(it.data)
+            }
         }
+
+        Result.Success(mainSections.toList().filter { it.watchMediaList.isNotEmpty() })
     }
 
-    private fun Result<List<WatchMedia>>.toMainSection(
+    private fun Result<List<WatchMedia>>.toMainSectionResult(
         @StringRes titleId: Int,
         sectionType: SectionType = SectionType.Poster
-    ): MainSection {
+    ): Result<MainSection> {
         return when(this) {
             is Result.Error -> {
                 if (exception is ApiKeyException) {
-                    throw ApiKeyException(exception?.message.orEmpty())
+                    Result.Error(this.exception)
                 } else {
-                    MainSection(titleId, emptyList())
+                    Result.Success(MainSection(titleId, emptyList()))
                 }
             }
-            is Result.Success -> MainSection(titleId, data, sectionType)
+            is Result.Success -> Result.Success(MainSection(titleId, data, sectionType))
         }
     }
 }
