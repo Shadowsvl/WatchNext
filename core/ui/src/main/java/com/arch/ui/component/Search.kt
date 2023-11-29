@@ -14,12 +14,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.arch.design_system.annotations.ThemePreviews
 import com.arch.design_system.component.AppSearchTextField
 import com.arch.design_system.theme.AppTheme
 import com.arch.design_system.theme.basePadding
 import com.arch.design_system.theme.smallPadding
+import com.arch.ui.R
 
 @Composable
 fun SearchToolbar(
@@ -54,8 +56,9 @@ fun SearchToolbar(
                 onClick = onBackClick
             )
             AppSearchTextField(
+                searchQuery = searchQuery,
+                searchHint = stringResource(id = R.string.screen_label_search),
                 onSearchQueryChanged = onSearchQueryChanged,
-                searchQuery = searchQuery
             )
         }
     }

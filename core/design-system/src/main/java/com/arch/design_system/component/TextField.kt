@@ -9,6 +9,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -34,8 +35,9 @@ import com.arch.design_system.theme.AppTheme
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun AppSearchTextField(
-    onSearchQueryChanged: (String) -> Unit,
-    searchQuery: String
+    searchQuery: String,
+    searchHint: String = "",
+    onSearchQueryChanged: (String) -> Unit
 ) {
     val focusRequester = remember { FocusRequester() }
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -53,6 +55,12 @@ fun AppSearchTextField(
             unfocusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent
         ),
+        placeholder = {
+            Text(
+                text = searchHint,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+            )
+        },
         leadingIcon = {
             Icon(
                 imageVector = AppIcons.Search,
@@ -118,7 +126,9 @@ fun AppSearchTextField(
 fun SearchTextFieldDefault() {
     AppTheme {
         AppBackground(
-            modifier = Modifier.fillMaxWidth().height(80.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(80.dp)
         ) {
             AppSearchTextField(
                 onSearchQueryChanged = {},
