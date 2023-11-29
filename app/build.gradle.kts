@@ -9,8 +9,8 @@ android {
 
     defaultConfig {
         applicationId = "com.heka.watchnext"
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 3
+        versionName = "1.1.0"
 
         vectorDrawables {
             useSupportLibrary = true
