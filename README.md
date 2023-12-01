@@ -1,5 +1,5 @@
 # Watch Next
-[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/Shadowsvl/Watch-Next/blob/develop/README.en.md)
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/Shadowsvl/WatchNext/blob/master/README.en.md)
 
 Proyecto muestra en desarrollo usando [Jetpack Compose](https://developer.android.com/jetpack/compose). Con el objetivo de mostrar un proyecto modular con las capacidades actuales para la creación de UI, y su uso en conjunto con el resto de librerías para navegación, inyección de dependencias, consumo de servicios REST y persistencia de datos local. Siguiendo las prácticas actuales recomendadas por la [Guía de Arquitectura](https://developer.android.com/topic/architecture).
 
