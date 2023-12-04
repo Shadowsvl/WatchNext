@@ -9,8 +9,8 @@ android {
 
     defaultConfig {
         applicationId = "com.heka.watchnext"
-        versionCode = 4
-        versionName = "1.2.0"
+        versionCode = 5
+        versionName = "1.2.1"
 
         vectorDrawables {
             useSupportLibrary = true
@@ -39,6 +39,8 @@ dependencies {
     implementation(project(":core:design-system"))
     implementation(project(":core:ui"))
     implementation(project(":core:data"))
+
+    implementation(libs.coil.compose)
 
     implementation(project(":feature:home"))
     implementation(project(":feature:detail"))
