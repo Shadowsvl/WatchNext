@@ -12,5 +12,7 @@ import dagger.hilt.components.SingletonComponent
 interface NetworkDataSourceModule {
 
     @Binds
-    fun WatchMediaNetwork.binds(): WatchMediaNetworkDataSource
+    fun bindsWatchMediaNetworkDS(
+        watchMediaNetwork: WatchMediaNetwork
+    ): WatchMediaNetworkDataSource
 }

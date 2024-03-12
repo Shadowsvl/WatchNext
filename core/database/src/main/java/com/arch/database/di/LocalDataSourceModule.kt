@@ -12,5 +12,7 @@ import dagger.hilt.components.SingletonComponent
 interface LocalDataSourceModule {
 
     @Binds
-    fun WatchMediaLocal.binds(): WatchMediaLocalDataSource
+    fun bindsWatchMediaLocalDS(
+        watchMediaLocal: WatchMediaLocal
+    ): WatchMediaLocalDataSource
 }
