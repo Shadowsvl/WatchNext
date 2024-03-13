@@ -5,6 +5,7 @@ targetSDK = "34"
 kotlin = "1.9.22"
 kotlinComposeCompiler = "1.5.10"
 androidGradlePlugin = "8.3.0"
+androidTools = "31.3.0"
 
 androidxCore = "1.12.0"
 androidxCoreSplashscreen = "1.0.1"
@@ -72,6 +73,7 @@ androidx-compose-debug-tooling = { module = "androidx.compose.ui:ui-tooling"}
 androidx-compose-debug-manifest = { module = "androidx.compose.ui:ui-test-manifest"}
 
 android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
+android-tools-common = { module = "com.android.tools:common", version.ref = "androidTools" }
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 
 [bundles]

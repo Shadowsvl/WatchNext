@@ -6,14 +6,14 @@ import configuration.extensions.bundle
 import configuration.extensions.debugImplementation
 import configuration.extensions.implementation
 import configuration.extensions.library
+import configuration.extensions.libs
 import configuration.extensions.versionString
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.kotlin.dsl.dependencies
 
 internal fun Project.configureAndroidCompose(
-    commonExtension: CommonExtension<*, *, *, *, *, *>,
-    libs: VersionCatalog
+    commonExtension: CommonExtension<*, *, *, *, *, *>
 ) {
     commonExtension.apply {
         buildFeatures {

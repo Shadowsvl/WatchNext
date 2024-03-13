@@ -3,17 +3,18 @@ package configuration
 import com.android.build.api.dsl.CommonExtension
 import configuration.extensions.implementation
 import configuration.extensions.library
+import configuration.extensions.libs
 import configuration.extensions.version
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.plugins.JavaPluginExtension
+import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 internal fun Project.configureAndroidKotlin(
-    commonExtension: CommonExtension<*, *, *, *, *, *>,
-    libs: VersionCatalog
+    commonExtension: CommonExtension<*, *, *, *, *, *>
 ) {
     commonExtension.apply {
         compileSdk = libs.version("targetSDK")
@@ -38,7 +39,7 @@ internal fun Project.configureAndroidKotlin(
 }
 
 internal fun Project.configureKotlinJvm() {
-    extensions.configure(JavaPluginExtension::class.java) {
+    extensions.configure<JavaPluginExtension> {
         sourceCompatibility = JavaVersion.VERSION_18
         targetCompatibility = JavaVersion.VERSION_18
     }
@@ -47,7 +48,7 @@ internal fun Project.configureKotlinJvm() {
 }
 
 private fun Project.configureKotlin() {
-    tasks.withType(KotlinCompile::class.java).configureEach {
+    tasks.withType<KotlinCompile>().configureEach {
         kotlinOptions {
             jvmTarget = JavaVersion.VERSION_18.toString()
         }

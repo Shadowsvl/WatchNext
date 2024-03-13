@@ -4,11 +4,12 @@ import configuration.configureAndroidKotlin
 import configuration.disableUnnecessaryAndroidTests
 import configuration.extensions.implementation
 import configuration.extensions.library
+import configuration.extensions.libs
 import configuration.extensions.testImplementation
 import configuration.extensions.version
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalogsExtension
+import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 
 class AndroidLibraryArchPlugin : Plugin<Project> {
@@ -21,12 +22,11 @@ class AndroidLibraryArchPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.kapt")
             }
 
-            val libs = extensions.getByType(VersionCatalogsExtension::class.java).named("libs")
-            extensions.configure(LibraryExtension::class.java) {
-                configureAndroidKotlin(this, libs)
-                defaultConfig.targetSdk = libs.version("targetSDK")
+            extensions.configure<LibraryExtension> {
+                configureAndroidKotlin(this)
+                lint.targetSdk = libs.version("targetSDK")
             }
-            extensions.configure(LibraryAndroidComponentsExtension::class.java) {
+            extensions.configure<LibraryAndroidComponentsExtension> {
                 disableUnnecessaryAndroidTests(target)
             }
 
