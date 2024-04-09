@@ -2,19 +2,22 @@
 minSDK = "26"
 targetSDK = "34"
 
-kotlin = "1.9.22"
-kotlinComposeCompiler = "1.5.10"
 androidGradlePlugin = "8.3.0"
+kotlin = "1.9.22"
+coreKtx = "1.12.0"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+lifecycleRuntimeKtx = "2.7.0"
+activityCompose = "1.8.2"
+composeBom = "2024.02.02"
+kotlinComposeCompiler = "1.5.10"
 androidTools = "31.3.0"
 
-androidxCore = "1.12.0"
-androidxCoreSplashscreen = "1.0.1"
-androidxActivity = "1.8.2"
-androidxLifecycle = "2.7.0"
-androidxAnotation = "1.7.1"
-androidxNavigation = "2.7.7"
-androidxComposeBom = "2024.02.02"
-androidxGoogleFonts = "1.6.3"
+coreSplashscreen = "1.0.1"
+annotation = "1.7.1"
+navigationCompose = "2.7.7"
+googleFonts = "1.6.3"
 
 accompanistSwipeRefresh = "0.23.1"
 accompanistSystemUiController = "0.30.1"
@@ -28,21 +31,17 @@ okhttp = "4.12.0"
 okHttpProfiler = "1.0.8"
 room = "2.6.1"
 
-junit4 = "4.13.2"
-androidxTestExt = "1.1.5"
-androidxTestEspresso = "3.5.1"
-
 [libraries]
-androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
-androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidxCoreSplashscreen" }
-androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity"}
-androidx-lifecycle-runtimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidxLifecycle" }
-androidx-lifecycle-runtimeCompose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
-androidx-lifecycle-viewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
-androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "androidxAnotation" }
-androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidxNavigation" }
-androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidxComposeBom" }
-androidx-google-fonts = { module = "androidx.compose.ui:ui-text-google-fonts", version.ref = "androidxGoogleFonts" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose"}
+androidx-lifecycle-runtimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-runtimeCompose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-viewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
+androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+androidx-google-fonts = { module = "androidx.compose.ui:ui-text-google-fonts", version.ref = "googleFonts" }
 androidx-compose-ui = { module = "androidx.compose.ui:ui" }
 androidx-compose-graphics = { module = "androidx.compose.ui:ui-graphics" }
 androidx-compose-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
@@ -64,9 +63,9 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 
-junit4 = { module = "junit:junit", version.ref = "junit4" }
-androidx-test-ext = { module = "androidx.test.ext:junit-ktx", version.ref = "androidxTestExt" }
-androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "androidxTestEspresso" }
+junit4 = { module = "junit:junit", version.ref = "junit" }
+androidx-test-ext = { module = "androidx.test.ext:junit-ktx", version.ref = "junitVersion" }
+androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
 androidx-compose-ui-test = { module = "androidx.compose.ui:ui-test-junit4" }
 
 androidx-compose-debug-tooling = { module = "androidx.compose.ui:ui-tooling"}
