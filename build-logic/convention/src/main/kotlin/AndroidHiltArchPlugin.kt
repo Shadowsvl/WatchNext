@@ -16,7 +16,7 @@ class AndroidHiltArchPlugin : Plugin<Project> {
 
             dependencies {
                 implementation(libs.library("hilt-android"))
-                kapt(libs.library("hilt-compiler"))
+                kapt(libs.library("hilt-android-compiler"))
                 implementation(libs.library("androidx-hilt-navigation-compose"))
             }
         }

@@ -32,7 +32,7 @@ class AndroidLibraryArchPlugin : Plugin<Project> {
 
             dependencies {
                 implementation(libs.library("kotlinx-coroutines-android"))
-                testImplementation(libs.library("junit4"))
+                testImplementation(libs.library("junit"))
             }
         }
     }

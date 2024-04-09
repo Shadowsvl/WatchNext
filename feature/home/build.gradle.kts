@@ -13,5 +13,5 @@ android {
 }
 
 dependencies {
-    implementation(libs.accompanist.swipeRefresh)
+    implementation(libs.accompanist.swiperefresh)
 }

@@ -28,10 +28,10 @@ class AndroidApplicationArchPlugin : Plugin<Project> {
             }
 
             dependencies {
-                implementation(libs.library("androidx-lifecycle-runtimeKtx"))
+                implementation(libs.library("androidx-lifecycle-runtime-ktx"))
                 implementation(libs.library("androidx-core-splashscreen"))
-                implementation(libs.library("accompanist-systemUiController"))
-                testImplementation(libs.library("junit4"))
+                implementation(libs.library("accompanist-systemuicontroller"))
+                testImplementation(libs.library("junit"))
                 androidTestImplementation(libs.bundle("androidx-test"))
             }
         }
