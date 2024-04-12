@@ -32,7 +32,7 @@ El proyecto utiliza [The Movie DB API](https://www.themoviedb.org/documentation/
 
 Es necesario crear un archivo **secret.properties** en el directorio principal y agregar la llave:
 
-`API_KEY=<TuLlaveDeAPI>`
+`API_KEY="Tu llave de API"`
 
 ## Capturas
 
